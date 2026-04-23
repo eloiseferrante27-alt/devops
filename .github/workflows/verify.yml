@@ -1,53 +1,27 @@
-# Le nom qui apparaîtra dans l'onglet "Actions" de GitHub
+<!DOCTYPE html>
 
-name: Guard-Pipeline-CI-Docker
+<html lang="fr">
 
- 
+<head>
 
-# Quand le robot doit-il se réveiller ?
+    <meta charset="UTF-8">
 
-on:
+    <title>Console de Surveillance</title>
 
-  pull_request:
+    <style>body { font-family: sans-serif; padding: 50px; text-align: center; }</style>
 
-    branches: [ "main" ] # Quand on veut fusionner vers la production
+</head>
 
- 
+<body>
 
-# La liste des tâches (jobs) à accomplir
+    <h1>Système de Monitoring</h1>
 
-jobs:
+    <div style="border: 2px solid red; padding: 20px;">
 
-  container-test:
+        <p>STATUT : <strong>Salut … </strong>, le pipeline de déploiement est activé.</p>
 
-    runs-on: ubuntu-latest # Le robot loue un serveur Linux (Ubuntu) chez GitHub
+    </div>
 
-   
+</body>
 
-    steps:
-
-      # Étape 1 : Le robot télécharge votre code depuis le dépôt
-
-      - name: Checkout code
-
-        uses: actions/checkout@v3
-
- 
-
-      # Étape 2 : Le robot construit votre image Docker
-
-      # Il lit votre Dockerfile et installe tout dedans
-
-      - name: Build Docker Image
-
-        run: docker compose build
-
- 
-
-      # Étape 3 : LE MOMENT DE VÉRITÉ
-
-      # Le robot lance le conteneur et exécute votre test de sécurité
-
-      - name: Run Kill-Switch Test in Docker
-
-        run: docker compose run web python manage.py test
+</html>
